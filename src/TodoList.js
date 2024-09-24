@@ -1,21 +1,15 @@
 import { React } from "react";
+import TodoItem from "./TodoItem";
 // file TasksList.js
 
-export default function TasksList({ tasks, dispatch }) {
+function TasksList({ tasks, dispatch }) {
   return (
-    <>
+    <ul>
       {tasks.map((task) => (
-        <li key={task.id}>
-          <input
-            onChange={() => dispatch({ type: "UPDATE_TODO", task: { ...task, done: !task.done } })}
-            type="checkbox"
-            checked={task.done}
-          />
-          {task.text}
-          <button onClick={() => dispatch({ type: "DELETE_TODO", taskId: task.id })}>Delete</button>
-          // <button onClick={() => dispatch({ type: "EDIT_TODO", taskId: task.id })}>Edit</button>
-        </li>
+        <TodoItem key={task.id} task={task} dispatch={dispatch} />
       ))}
-    </>
+    </ul>
   );
 }
+
+export default TasksList;

@@ -3,6 +3,13 @@ import { React } from "react";
 import TasksList from "./TodoList";
 import AddTodo from "./AddTodo";
 
+let nextId = 3;
+const initialTasks = [
+  { id: "0", text: "Code", done: false },
+  { id: "1", text: "Be happy", done: true },
+  { id: "2", text: "Rest", done: false },
+];
+
 function reducer(tasks, action) {
   switch (action.type) {
     case "ADD_TODO":
@@ -24,14 +31,17 @@ function reducer(tasks, action) {
         }
       });
 
+    case "START_EDITING":
+      return tasks.map((todo) => (todo.id === action.id ? { ...todo, editing: true } : todo));
+
+    case "TOGGLE_TODO":
+      return tasks.map((todo) => (todo.id === action.id ? { ...todo, done: !todo.done } : todo));
+
     case "DELETE_TODO":
       return tasks.filter((todo) => todo.id !== action.taskId);
 
     case "REMOVE_ALL_TODO":
       return [];
-
-    //case "START_EDITING":
-
     default:
       return tasks;
   }
@@ -51,12 +61,5 @@ export default function App() {
     </>
   );
 }
-
-let nextId = 3;
-const initialTasks = [
-  { id: "0", text: "Code", done: false },
-  { id: "1", text: "Be happy", done: true },
-  { id: "2", text: "Rest", done: false },
-];
 
 // []

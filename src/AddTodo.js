@@ -1,6 +1,6 @@
 import { React } from "react";
 
-export default function AddTodo({ dispatch }) {
+function AddTodo({ dispatch }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -13,7 +13,9 @@ export default function AddTodo({ dispatch }) {
 
   return (
     <form style={{ margin: 10 }} onSubmit={handleSubmit}>
-      <input name="text" type="text" />
+      <input name="text" type="text" /> <button type="submit">AddTodo</button>
     </form>
   );
 }
+
+export default AddTodo;
