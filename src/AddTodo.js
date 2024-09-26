@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { React } from "react";
 
 function AddTodo({ dispatch }) {
@@ -12,7 +13,7 @@ function AddTodo({ dispatch }) {
   };
 
   return (
-    <form style={{ margin: 10 }} onSubmit={handleSubmit}>
+    <form id="form-id" style={{ margin: 10 }} onSubmit={handleSubmit}>
       <input name="text" type="text" /> <button type="submit">AddTodo</button>
     </form>
   );

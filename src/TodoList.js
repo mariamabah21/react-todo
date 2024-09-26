@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { React } from "react";
 import TodoItem from "./TodoItem";
-// file TasksList.js
 
 function TasksList({ tasks, dispatch }) {
   return (

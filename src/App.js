@@ -19,12 +19,13 @@ function reducer(tasks, action) {
           id: nextId++,
           text: action.text,
           done: false,
+          editing: false,
         },
       ];
 
     case "UPDATE_TODO":
       return tasks.map((todo) => {
-        if (todo.id === action.tasks.id) {
+        if (todo.id === action.task.id) {
           return action.tasks;
         } else {
           return todo;
@@ -38,7 +39,7 @@ function reducer(tasks, action) {
       return tasks.map((todo) => (todo.id === action.id ? { ...todo, done: !todo.done } : todo));
 
     case "DELETE_TODO":
-      return tasks.filter((todo) => todo.id !== action.taskId);
+      return tasks.filter((todo) => todo.id !== action.id);
 
     case "REMOVE_ALL_TODO":
       return [];
